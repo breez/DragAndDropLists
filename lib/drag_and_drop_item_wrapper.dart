@@ -213,7 +213,8 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
               if (candidateData.isNotEmpty) {}
               return Container();
             },
-            onWillAccept: (incoming) {
+            onWillAcceptWithDetails: (details) {
+              var incoming = details.data;
               bool accept = true;
               if (widget.parameters!.itemOnWillAccept != null)
                 accept = widget.parameters!.itemOnWillAccept!(
@@ -232,7 +233,8 @@ class _DragAndDropItemWrapper extends State<DragAndDropItemWrapper>
                 });
               }
             },
-            onAccept: (incoming) {
+            onAcceptWithDetails: (details) {
+              var incoming = details.data;
               if (mounted) {
                 setState(() {
                   if (widget.parameters!.onItemReordered != null)

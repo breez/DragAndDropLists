@@ -165,7 +165,8 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
               if (candidateData.isNotEmpty) {}
               return Container();
             },
-            onWillAccept: (incoming) {
+            onWillAcceptWithDetails: (details) {
+              var incoming = details.data;
               bool accept = true;
               if (widget.parameters.listOnWillAccept != null) {
                 accept = widget.parameters.listOnWillAccept!(
@@ -187,7 +188,8 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
                 }
               }
             },
-            onAccept: (incoming) {
+            onAcceptWithDetails: (details) {
+              var incoming = details.data;
               if (mounted) {
                 setState(() {
                   widget.parameters.onListReordered!(

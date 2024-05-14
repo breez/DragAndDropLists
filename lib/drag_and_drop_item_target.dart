@@ -53,7 +53,8 @@ class _DragAndDropItemTarget extends State<DragAndDropItemTarget>
               if (candidateData.isNotEmpty) {}
               return Container();
             },
-            onWillAccept: (incoming) {
+            onWillAcceptWithDetails: (details) {
+              var incoming = details.data;
               bool accept = true;
               if (widget.parameters.itemTargetOnWillAccept != null)
                 accept =
@@ -72,7 +73,8 @@ class _DragAndDropItemTarget extends State<DragAndDropItemTarget>
                 });
               }
             },
-            onAccept: (incoming) {
+            onAcceptWithDetails: (details) {
+              var incoming = details.data;
               if (mounted) {
                 setState(() {
                   widget.onReorderOrAdd(incoming, widget.parent!, widget);
